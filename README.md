@@ -40,13 +40,11 @@ El sitio reúne mi presentación, trayectoria, conocimientos, proyectos y currí
 
 ### DAW OS — Classroom Sync
 
-Proyecto personal que explora la automatización de la gestión académica conectando Google Classroom con Notion mediante Google Apps Script.
+La integración conecta Classroom con Notion mediante Google Apps Script y centraliza las tareas en una vista accesible desde el móvil. Surgió cuando el calendario académico dejó de estar disponible y revisar curso por curso se volvió lento, desordenado y propenso a olvidos. El activador consulta los cambios cada 15 minutos.
 
-La propuesta contempla consultar cursos y tareas de Classroom, procesar los datos y preparar su registro en una base de datos de Notion. La página incluye una ficha técnica y un esquema de arquitectura.
+Una ejecución real revisó **8 cursos y 80 tareas**: 80 ya estaban sincronizadas, sin omisiones ni errores. Ese ciclo verificó consulta, comparación y detección de registros existentes; no ejercitó creación ni actualización porque no encontró cambios. El código está en [Waelbgg/daw-os-classroom-sync](https://github.com/Waelbgg/daw-os-classroom-sync).
 
-**Estado:** el proyecto real continúa en desarrollo. La consulta y el diagnóstico de Classroom se han trabajado y la integración con Notion está preparada para continuar su validación. La sincronización completa de extremo a extremo todavía no está validada.
-
-**Demo:** la demostración del sitio es una simulación local en el navegador con datos ficticios. Permite filtrar tareas, simular una sincronización, consultar el registro de actividad y reiniciar la demo. No inicia sesión ni realiza peticiones reales a Google Classroom o Notion.
+La demo web es independiente y usa datos ficticios; no realiza peticiones a las cuentas reales. La conexión activa es Classroom → Apps Script → Notion. La ampliación a otros servicios es una posibilidad futura.
 
 Tecnologías contempladas:
 
@@ -81,7 +79,7 @@ El sitio no requiere frameworks, gestores de paquetes ni un proceso de compilaci
 3. **Estilos compartidos y específicos:** `style.css` concentra los estilos comunes y `portfolio-pages.css` ajusta la presentación de las páginas interiores.
 4. **Rutas relativas:** las páginas interiores utilizan rutas relativas para cargar hojas de estilo, scripts e imágenes tanto en Firebase Hosting como en GitHub Pages.
 5. **JavaScript nativo:** las interacciones se implementan sin dependencias externas, adecuado para el alcance actual del portfolio.
-6. **Simulación aislada:** DAW OS utiliza datos ficticios en el navegador para mostrar el flujo previsto sin exponer credenciales ni aparentar una integración real ya terminada.
+6. **Demo aislada de la integración:** el navegador utiliza datos ficticios; la sincronización real se ejecuta en Apps Script y no expone credenciales en el sitio público.
 7. **Mejoras de accesibilidad incorporadas:** se utilizan HTML semántico, enlace para saltar al contenido, etiquetas de navegación, foco visible, encabezados de tabla y avisos de estado en la demo. No se ha realizado una auditoría formal WCAG, por lo que no se declara conformidad certificada.
 
 ## Estructura del repositorio
@@ -125,11 +123,11 @@ El diseño responsive contempla móviles, tablets y escritorio. La navegación u
 
 ## Privacidad y seguridad
 
-La demo de DAW OS se ejecuta localmente en el navegador con datos ficticios y no inicia sesión ni realiza peticiones a cuentas reales de Google Classroom o Notion. El repositorio contiene los recursos del sitio, pero no credenciales ni claves de API. La integración real permanece pendiente de validación.
+La demo web de DAW OS utiliza datos ficticios y no se conecta a cuentas reales. La integración operativa se ejecuta desde Apps Script; sus credenciales no forman parte de este repositorio.
 
 ## Estado y evolución
 
-El portfolio continúa creciendo junto con la formación en DAW. El trabajo futuro de DAW OS contempla validar la sincronización completa entre Classroom y Notion, incluyendo permisos, errores de API y prevención de duplicados. También se prevén nuevas revisiones de accesibilidad, rendimiento y contenido conforme evolucione el portfolio.
+El portfolio continúa creciendo junto con la formación en DAW. En DAW OS queda ampliar la validación de creación y actualización mediante ejecuciones controladas y seguir revisando permisos, errores y prevención de duplicados. También se prevén nuevas revisiones de accesibilidad, rendimiento y contenido.
 
 ## Contacto
 

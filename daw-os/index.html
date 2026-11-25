@@ -27,46 +27,46 @@
       <h1 id="daw-title">DAW OS — Classroom Sync</h1>
       <p>Revisar varios cursos de Classroom para saber qué entregar lleva tiempo. DAW OS explora cómo reunir esas tareas en Notion con Google Apps Script.</p>
       <ul class="tags" aria-label="Tecnologías"><li>JavaScript</li><li>Google Apps Script</li><li>Classroom API</li><li>Notion API</li><li>REST</li><li>Git / GitHub</li></ul>
-      <div class="actions"><a class="button primary" href="#daw-demo">Explorar demo</a><a class="button secondary" href="#daw-architecture">Ver arquitectura</a></div>
+      <div class="actions"><a class="button primary" href="#daw-demo">Explorar demo</a><a class="button secondary" href="#daw-architecture">Ver arquitectura</a><a class="button secondary" href="https://github.com/Waelbgg/daw-os-classroom-sync" target="_blank" rel="noopener noreferrer">Ver código fuente</a></div>
     </div>
     <div class="daw-status">
       <p class="eyebrow">Estado del proyecto real</p>
-      <h3>En desarrollo y documentación técnica</h3>
+      <h3>Integración operativa · sincronización cada 15 minutos</h3>
       <p>Desarrollador: Wael Jebari · Plataforma: Google Apps Script</p>
-      <p>Consulta de Classroom y diagnóstico trabajados. Integración con Notion preparada; sincronización completa pendiente de validación definitiva.</p>
-      <p>La demo de esta página ilustra el flujo con tareas ficticias.</p>
+      <p>La integración real consulta Classroom y sincroniza las tareas con Notion. Una ejecución registrada revisó 8 cursos y 80 tareas: las 80 ya estaban al día, sin omisiones ni errores.</p>
+      <p>La demo interactiva de esta página es una simulación independiente con datos ficticios; no se conecta a las cuentas reales.</p>
     </div>
   </div>
   <details class="project-details">
     <summary>Ficha técnica del proyecto</summary>
     <div class="project-notes">
-      <section><h3>Problema</h3><p>La información académica está dispersa entre cursos. Consultar cada asignatura, priorizar tareas y centralizar fechas exige trabajo manual repetitivo.</p></section>
-      <section><h3>Solución planteada</h3><p>Apps Script actúa como intermediario: consulta cursos y tareas, prepara datos y los traslada a la base de datos «Tareas y entregas» de Notion. El objetivo es reducir la gestión manual durante DAW.</p></section>
+      <section><h3>Problema</h3><p>Al bloquearse el calendario académico, revisar Classroom curso por curso se convirtió en una tarea manual y desordenada. Era fácil pasar por alto una entrega.</p></section>
+      <section><h3>Solución implantada</h3><p>Google Apps Script consulta los cursos y tareas de Classroom y los sincroniza con «Tareas y entregas» en Notion. La vista centralizada permite revisar el conjunto desde el móvil y se actualiza cada 15 minutos.</p></section>
       <section><h3>Consulta y diagnóstico trabajados</h3><p><code>comprobarClassroom()</code> y <code>listarTareas()</code>: comprobar acceso, consultar cursos y recuperar títulos, fechas e identificadores.</p><p><code>probarNotion()</code>, <code>diagnosticoNotion()</code>, <code>comprobarPropiedades()</code>, <code>pruebaGuardado()</code> y <code>guardarTokenNotion()</code>: configuración, conexión, diagnóstico y pruebas de almacenamiento.</p></section>
-      <section><h3>Sincronización y automatización previstas</h3><p><code>sincronizarClassroomConNotion()</code> centraliza la lógica prevista; <code>instalarTriggerSincronizacion()</code> prepara ejecuciones periódicas. Se plantea utilizar IDs únicos de Classroom para evitar duplicados y actualizar registros existentes.</p></section>
-      <section><h3>APIs, configuración y datos</h3><p>Classroom API para cursos y tareas; StudentSubmissions se contempla para estados de entrega. Notion API REST para consultas de diagnóstico y futura creación y actualización de registros. PropertiesService almacena configuración sensible y UrlFetchApp realiza comunicación HTTP. La estructura final de propiedades de Notion está pendiente de confirmar.</p></section>
-      <section><h3>Estado y limitaciones</h3><p>Consulta y listado de Classroom desarrollados y trabajados; diagnóstico desarrollado; configuración y base de datos de Notion preparadas. Se identificaron errores de autenticación y comunicación, incluido HTTP 401. La sincronización extremo a extremo no está validada; triggers y gestión avanzada se contemplan en la arquitectura.</p></section>
+      <section><h3>Sincronización y automatización</h3><p><code>sincronizarClassroomConNotion()</code> consulta los cursos, revisa las tareas y contrasta sus datos con Notion. Los IDs de Classroom permiten reconocer registros existentes y prevenir duplicados. <code>instalarTriggerSincronizacion()</code> configura el ciclo periódico de 15 minutos.</p></section>
+      <section><h3>APIs, configuración y datos</h3><p>Classroom API proporciona cursos, tareas y estados de entrega visibles para la cuenta. Notion API REST permite consultar y mantener los registros. PropertiesService guarda el token fuera del código y UrlFetchApp realiza las peticiones HTTP.</p></section>
+      <section><h3>Estado y límites de la validación</h3><p>Una ejecución real completó la revisión de 8 cursos y 80 tareas: 0 creadas, 0 actualizadas, 80 sin cambios y 0 omitidas. Esto valida consulta, comparación y detección de tareas ya sincronizadas en ese conjunto. Al no haber cambios detectados, ese ciclo no ejercitó creación ni actualización.</p></section>
       <section><h3>Decisiones técnicas</h3><p>Integración desacoplada, IDs externos, prevención de duplicados y actualización en lugar de creación repetida. Configuración sensible fuera de la lógica principal y funciones de diagnóstico para permisos, configuración y comunicación.</p></section>
       <section><h3>Aprendizajes y valor profesional</h3><p>JavaScript aplicado a sistemas, automatización, consumo de APIs REST, autenticación por tokens, comunicación HTTP, gestión de errores, procesamiento de datos, bases de datos, arquitectura, documentación y Git. Experiencia práctica abordando una necesidad real mediante integración de plataformas.</p></section>
     </div>
   </details>
   <details class="project-details daw-expand" id="architecture-details"><summary>Arquitectura de integración</summary>
   <section class="daw-section" id="daw-architecture" aria-labelledby="daw-arch-title">
-    <p class="eyebrow">Arquitectura de integración · Diseño previsto</p>
+    <p class="eyebrow">Arquitectura de integración · En funcionamiento</p>
     <h4 id="daw-arch-title">Flujo de datos</h3>
     <ol class="daw-flow">
       <li><span class="daw-icon">GC</span><strong>Google Classroom</strong><small>Cursos, tareas, fechas e IDs</small></li>
-      <li><span class="daw-icon">JS</span><strong>Google Apps Script</strong><small>Consulta, procesamiento, IDs y preparación</small></li>
-      <li><span class="daw-icon">API</span><strong>Notion API</strong><small>REST · creación y actualización previstas</small></li>
+      <li><span class="daw-icon">JS</span><strong>Google Apps Script</strong><small>Consulta, comparación y control de duplicados</small></li>
+      <li><span class="daw-icon">API</span><strong>Notion API</strong><small>REST · consulta y sincronización</small></li>
       <li><span class="daw-icon">DB</span><strong>Tareas y entregas</strong><small>Base de datos de Notion</small></li>
     </ol>
-    <p>Apps Script desacopla ambas plataformas. La automatización periódica y la sincronización integral están pendientes de validación.</p>
+    <p>El activador ejecuta la sincronización cada 15 minutos. La arquitectura puede ampliarse a otros servicios en el futuro; actualmente conecta Classroom con Notion.</p>
   </section></details>
   <details class="project-details daw-expand" id="demo-details" open><summary>Demo interactiva · Datos ficticios</summary>
   <section class="daw-section" id="daw-demo" aria-labelledby="daw-demo-title">
     <p class="eyebrow">Demo interactiva · Datos ficticios</p>
     <h4 id="daw-demo-title">DAW OS — Classroom Sync</h3>
-    <p>Simulación local del flujo previsto. No hay conexión real con Google Classroom ni Notion, ni se utilizan credenciales o datos académicos reales.</p>
+    <p>Simulación local e independiente con datos ficticios. No se conecta a Classroom ni a Notion y no utiliza credenciales ni datos académicos reales.</p>
     <div class="daw-dashboard">
       <div class="daw-toolbar"><div><span class="daw-label">Panel de sincronización</span><strong id="daw-process" role="status">Listo para simular</strong></div><button class="button primary" id="daw-sync" type="button">Simular sincronización</button></div>
       <div class="daw-stats">
