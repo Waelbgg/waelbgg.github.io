@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Caso de estudio de DAW OS con arquitectura, ficha técnica y demo local con datos ficticios.">
+  <meta name="theme-color" content="#f7f8fa">
+  <title>DAW OS — Classroom Sync · Wael Boutafah Jebari</title>
+  <link rel="canonical" href="https://waelbgg.github.io/daw-os">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../portfolio-pages.css">
+</head>
+<body>
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+  <header class="top">
+    <div class="wrap bar">
+      <a class="brand" href="../"><span class="mark" aria-hidden="true">W.</span> Wael Jebari</a>
+      <nav aria-label="Navegación principal"><a href="../">Inicio</a><a href="../proyectos/" aria-current="page">Proyectos</a><a href="../sobre-mi/">Sobre mí</a><a href="../contacto/">Contacto</a></nav>
+      <a class="header-cv" href="../cv-wael-jebari.pdf?v=2" download>Descargar CV</a>
+    </div>
+  </header>
+  <main id="contenido">
+<div class="wrap case-layout"><a class="text-link back-link" href="../proyectos/">Volver a proyectos</a><article class="panel project-card daw" id="daw-os" aria-labelledby="daw-title">
+  <div class="project-overview">
+    <div>
+      <p class="eyebrow">Proyecto personal · Automatización · Integración de APIs · Productividad</p>
+      <h1 id="daw-title">DAW OS — Classroom Sync</h1>
+      <p>Revisar varios cursos de Classroom para saber qué entregar lleva tiempo. DAW OS explora cómo reunir esas tareas en Notion con Google Apps Script.</p>
+      <ul class="tags" aria-label="Tecnologías"><li>JavaScript</li><li>Google Apps Script</li><li>Classroom API</li><li>Notion API</li><li>REST</li><li>Git / GitHub</li></ul>
+      <div class="actions"><a class="button primary" href="#daw-demo">Explorar demo</a><a class="button secondary" href="#daw-architecture">Ver arquitectura</a></div>
+    </div>
+    <div class="daw-status">
+      <p class="eyebrow">Estado del proyecto real</p>
+      <h3>En desarrollo y documentación técnica</h3>
+      <p>Desarrollador: Wael Jebari · Plataforma: Google Apps Script</p>
+      <p>Consulta de Classroom y diagnóstico trabajados. Integración con Notion preparada; sincronización completa pendiente de validación definitiva.</p>
+      <p>La demo de esta página ilustra el flujo con tareas ficticias.</p>
+    </div>
+  </div>
+  <details class="project-details">
+    <summary>Ficha técnica del proyecto</summary>
+    <div class="project-notes">
+      <section><h3>Problema</h3><p>La información académica está dispersa entre cursos. Consultar cada asignatura, priorizar tareas y centralizar fechas exige trabajo manual repetitivo.</p></section>
+      <section><h3>Solución planteada</h3><p>Apps Script actúa como intermediario: consulta cursos y tareas, prepara datos y los traslada a la base de datos «Tareas y entregas» de Notion. El objetivo es reducir la gestión manual durante DAW.</p></section>
+      <section><h3>Consulta y diagnóstico trabajados</h3><p><code>comprobarClassroom()</code> y <code>listarTareas()</code>: comprobar acceso, consultar cursos y recuperar títulos, fechas e identificadores.</p><p><code>probarNotion()</code>, <code>diagnosticoNotion()</code>, <code>comprobarPropiedades()</code>, <code>pruebaGuardado()</code> y <code>guardarTokenNotion()</code>: configuración, conexión, diagnóstico y pruebas de almacenamiento.</p></section>
+      <section><h3>Sincronización y automatización previstas</h3><p><code>sincronizarClassroomConNotion()</code> centraliza la lógica prevista; <code>instalarTriggerSincronizacion()</code> prepara ejecuciones periódicas. Se plantea utilizar IDs únicos de Classroom para evitar duplicados y actualizar registros existentes.</p></section>
+      <section><h3>APIs, configuración y datos</h3><p>Classroom API para cursos y tareas; StudentSubmissions se contempla para estados de entrega. Notion API REST para consultas de diagnóstico y futura creación y actualización de registros. PropertiesService almacena configuración sensible y UrlFetchApp realiza comunicación HTTP. La estructura final de propiedades de Notion está pendiente de confirmar.</p></section>
+      <section><h3>Estado y limitaciones</h3><p>Consulta y listado de Classroom desarrollados y trabajados; diagnóstico desarrollado; configuración y base de datos de Notion preparadas. Se identificaron errores de autenticación y comunicación, incluido HTTP 401. La sincronización extremo a extremo no está validada; triggers y gestión avanzada se contemplan en la arquitectura.</p></section>
+      <section><h3>Decisiones técnicas</h3><p>Integración desacoplada, IDs externos, prevención de duplicados y actualización en lugar de creación repetida. Configuración sensible fuera de la lógica principal y funciones de diagnóstico para permisos, configuración y comunicación.</p></section>
+      <section><h3>Aprendizajes y valor profesional</h3><p>JavaScript aplicado a sistemas, automatización, consumo de APIs REST, autenticación por tokens, comunicación HTTP, gestión de errores, procesamiento de datos, bases de datos, arquitectura, documentación y Git. Experiencia práctica abordando una necesidad real mediante integración de plataformas.</p></section>
+    </div>
+  </details>
+  <details class="project-details daw-expand" id="architecture-details"><summary>Arquitectura de integración</summary>
+  <section class="daw-section" id="daw-architecture" aria-labelledby="daw-arch-title">
+    <p class="eyebrow">Arquitectura de integración · Diseño previsto</p>
+    <h4 id="daw-arch-title">Flujo de datos</h3>
+    <ol class="daw-flow">
+      <li><span class="daw-icon">GC</span><strong>Google Classroom</strong><small>Cursos, tareas, fechas e IDs</small></li>
+      <li><span class="daw-icon">JS</span><strong>Google Apps Script</strong><small>Consulta, procesamiento, IDs y preparación</small></li>
+      <li><span class="daw-icon">API</span><strong>Notion API</strong><small>REST · creación y actualización previstas</small></li>
+      <li><span class="daw-icon">DB</span><strong>Tareas y entregas</strong><small>Base de datos de Notion</small></li>
+    </ol>
+    <p>Apps Script desacopla ambas plataformas. La automatización periódica y la sincronización integral están pendientes de validación.</p>
+  </section></details>
+  <details class="project-details daw-expand" id="demo-details" open><summary>Demo interactiva · Datos ficticios</summary>
+  <section class="daw-section" id="daw-demo" aria-labelledby="daw-demo-title">
+    <p class="eyebrow">Demo interactiva · Datos ficticios</p>
+    <h4 id="daw-demo-title">DAW OS — Classroom Sync</h3>
+    <p>Simulación local del flujo previsto. No hay conexión real con Google Classroom ni Notion, ni se utilizan credenciales o datos académicos reales.</p>
+    <div class="daw-dashboard">
+      <div class="daw-toolbar"><div><span class="daw-label">Panel de sincronización</span><strong id="daw-process" role="status">Listo para simular</strong></div><button class="button primary" id="daw-sync" type="button">Simular sincronización</button></div>
+      <div class="daw-stats">
+        <div><span>Tareas detectadas</span><strong id="daw-total">6</strong></div>
+        <div><span>Sincronizadas</span><strong id="daw-synced">2</strong></div>
+        <div><span>Pendientes</span><strong id="daw-pending">3</strong></div>
+        <div><span>Errores simulados</span><strong id="daw-errors">1</strong></div>
+      </div>
+      <p class="daw-last">Última sincronización simulada: <span id="daw-last">Todavía no ejecutada</span></p>
+      <div class="daw-toolbar daw-filter"><h5>Tareas de demostración</h5><label for="daw-filter">Estado <select id="daw-filter"><option value="all">Todos</option><option value="synced">Sincronizadas</option><option value="pending">Pendientes</option><option value="error">Error simulado</option></select></label></div>
+      <div class="daw-table-wrap"><table class="daw-table"><thead><tr><th scope="col">Tarea</th><th scope="col">Asignatura</th><th scope="col">Entrega</th><th scope="col">Estado</th></tr></thead><tbody id="daw-tasks"></tbody></table></div>
+      <div class="daw-activity"><div class="daw-toolbar"><h5>Registro de actividad simulado</h5><button type="button" class="button secondary" id="daw-reset">Reiniciar demo</button></div><ol id="daw-log" aria-live="polite" aria-relevant="additions"></ol></div>
+      <noscript><p>La demostración requiere JavaScript para funcionar.</p></noscript>
+    </div>
+  </section></details>
+  <details class="project-details">
+    <summary>Roadmap de evolución</summary>
+    <ol class="timeline daw-roadmap">
+      <li><span>Fase 1 · Consolidación</span><p>Revisar código, permisos y scopes; validar Classroom, autenticación con Notion y estructura de base de datos.</p></li>
+      <li><span>Fase 2 · Sincronización funcional</span><p>Implementar y validar creación y actualización de registros, prevención de duplicados y gestión de errores de API.</p></li>
+      <li><span>Fase 3 · Automatización</span><p>Instalar triggers, definir frecuencia, mejorar logs y diagnósticos y controlar fallos.</p></li>
+      <li><span>Fase 4 · Gestión avanzada</span><p>StudentSubmissions y estados de entrega; gestionar cambios, tareas eliminadas o despublicadas y preservar propiedades editadas manualmente cuando corresponda.</p></li>
+      <li><span>Fase 5 · Evolución</span><p>Mejorar arquitectura, incorporar integraciones, crear interfaz de gestión y explorar una aplicación web más independiente de Apps Script.</p></li>
+    </ol>
+  </details>
+</article></div>
+  </main>
+  <footer class="wrap foot">
+    <div><strong>Wael Boutafah Jebari</strong><p>Desarrollo de Aplicaciones Web · Barcelona</p></div>
+    <details class="privacy"><summary>Privacidad</summary><p>La demo DAW OS utiliza datos ficticios. La foto de perfil se carga desde GitHub. Los enlaces externos tienen sus propias políticas de privacidad.</p></details>
+    <a href="https://github.com/Waelbgg" target="_blank" rel="noopener noreferrer">GitHub · @Waelbgg</a>
+  </footer>
+  <script src="../daw-demo.js" defer></script>
+<script src="../portfolio.js" defer></script>
+</body>
+</html>

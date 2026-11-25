@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://waelbgg.github.io/sitemap.xml
