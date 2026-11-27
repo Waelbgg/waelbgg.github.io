@@ -6,14 +6,13 @@ El sitio reúne mi presentación, trayectoria, conocimientos, proyectos y currí
 
 ## Vista previa
 
-![Captura de la página principal del portafolio](https://image.thum.io/get/width/1200/crop/800/noanimate/https://waelbgg.github.io/)
+![Captura de la página principal del portafolio](https://image.thum.io/get/width/1200/crop/800/noanimate/https://www.waeljebari.dev)
 
-<sub>Captura generada a partir de la versión pública de GitHub Pages mediante Thum.io.</sub>
+<sub>Captura generada a partir de la web oficial mediante Thum.io.</sub>
 
 ## Sitio publicado
 
-- **Web principal (Firebase Hosting):** https://portafolio-wael-jebari.web.app/
-- **GitHub Pages:** https://waelbgg.github.io/
+- **Web principal (Firebase Hosting):** https://www.waeljebari.dev
 - **Repositorio:** https://github.com/Waelbgg/waelbgg.github.io
 
 ## Secciones
@@ -115,7 +114,7 @@ El portfolio es una web estática sin dependencias ni proceso de compilación. S
 
 ## Publicaciones
 
-El sitio está publicado en [GitHub Pages](https://waelbgg.github.io/) y en [Firebase Hosting](https://portafolio-wael-jebari.web.app/). Ambas publicaciones sirven el portfolio estático; su configuración es independiente y no se sincroniza automáticamente.
+El sitio está publicado en [www.waeljebari.dev](https://www.waeljebari.dev). Ambas publicaciones sirven el portfolio estático; su configuración es independiente y no se sincroniza automáticamente.
 
 ## Experiencia y compatibilidad
 
@@ -133,7 +132,7 @@ El portfolio continúa creciendo junto con la formación en DAW. En DAW OS queda
 
 - **GitHub:** https://github.com/Waelbgg
 - **Correo:** [waelboutafah2007@gmail.com](mailto:waelboutafah2007@gmail.com)
-- **Portafolio:** https://portafolio-wael-jebari.web.app/
+- **Portafolio:** https://www.waeljebari.dev
 
 ---
 
